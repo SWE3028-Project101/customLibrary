@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: test
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: httpexchanges,health,info,metrics
+  endpoint:
+    http trace:
+      enabled: true
+
