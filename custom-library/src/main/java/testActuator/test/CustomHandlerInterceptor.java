@@ -25,13 +25,6 @@ public class CustomHandlerInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // 특정 URL로의 요청을 처리
-        /*
-        if (request.getRequestURI().equals("/")) {
-            System.out.println("Request URI: " + request.getRequestURI());
-            System.out.println("Request Method: " + request.getMethod());
-        }
-
-         */
         //meterRegistry.counter("custom.requests", "uri", request.getRequestURI(), "method", request.getMethod()).increment();
 
         return true;
