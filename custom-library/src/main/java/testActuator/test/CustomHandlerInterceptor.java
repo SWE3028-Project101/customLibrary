@@ -26,7 +26,8 @@ public class CustomHandlerInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // 특정 URL로의 요청을 처리
         //meterRegistry.counter("custom.requests", "uri", request.getRequestURI(), "method", request.getMethod()).increment();
-
+        long startTime = System.currentTimeMillis();
+        request.setAttribute("startTime", startTime);
         return true;
 
     }
@@ -34,6 +35,10 @@ public class CustomHandlerInterceptor implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         String requestURI = request.getRequestURI();
+        long startTime = (Long) request.getAttribute("startTime");
+        long endTime = System.currentTimeMillis();
+        long executeTime = endTime - startTime;
+        System.out.println(executeTime);
         if (requestURI.equals("/")) {
             //System.out.println("Response Status: " + response.getStatus());
             // 요청을 처리한 후 메모리 사용량 추적
@@ -44,7 +49,7 @@ public class CustomHandlerInterceptor implements HandlerInterceptor {
             // 요청을 처리한 후 메모리 사용량 추적
             long memoryUsage = analyzeMemoryUsage();
 
-            meterRegistry.gauge("custom.memory.usage", Tags.of("uri",requestURI,"status",String.valueOf(response.getStatus())),memoryUsage);
+            meterRegistry.gauge("custom.memory.usage", Tags.of("uri",requestURI,"status",String.valueOf(response.getStatus()),"executingTime", String.valueOf(executeTime)+"ms"),memoryUsage);
         }
     }
 
