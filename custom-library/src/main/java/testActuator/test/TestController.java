@@ -7,15 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TestController {
-    /*
-    private final CustomHandlerInterceptor customHandlerInterceptor;
-
-    @Autowired
-    public TestController(CustomHandlerInterceptor customHandlerInterceptor) {
-        this.customHandlerInterceptor = customHandlerInterceptor;
-    }
-
-     */
 
     @GetMapping("/")
     public String mainPage(){

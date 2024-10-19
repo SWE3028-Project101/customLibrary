@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.lang.management.ManagementFactory;
+import java.time.LocalDateTime;
 
 
 public class CustomHandlerInterceptor implements HandlerInterceptor {
@@ -38,18 +39,13 @@ public class CustomHandlerInterceptor implements HandlerInterceptor {
         long startTime = (Long) request.getAttribute("startTime");
         long endTime = System.currentTimeMillis();
         long executeTime = endTime - startTime;
-        System.out.println(executeTime);
+        LocalDateTime currentTime = LocalDateTime.now();
+        //System.out.println(executeTime);
         if (requestURI.equals("/")) {
-            //System.out.println("Response Status: " + response.getStatus());
-            // 요청을 처리한 후 메모리 사용량 추적
 
-            // 응답 메트릭 카운터 증가
-            //meterRegistry.counter("custom.responses", "uri", request.getRequestURI(), "status", String.valueOf(response.getStatus())).increment();
-
-            // 요청을 처리한 후 메모리 사용량 추적
             long memoryUsage = analyzeMemoryUsage();
 
-            meterRegistry.gauge("custom.memory.usage", Tags.of("uri",requestURI,"status",String.valueOf(response.getStatus()),"executingTime", String.valueOf(executeTime)+"ms"),memoryUsage);
+            meterRegistry.gauge("custom.memory.usage", Tags.of("uri",requestURI,"status",String.valueOf(response.getStatus()),"executingTime", String.valueOf(executeTime)+"ms","currentTime",String.valueOf(currentTime)),memoryUsage);
         }
     }
 
@@ -57,7 +53,7 @@ public class CustomHandlerInterceptor implements HandlerInterceptor {
         ThreadMXBean threadMXBean = (ThreadMXBean) ManagementFactory.getThreadMXBean();
         long threadId = Thread.currentThread().getId();
         long memoryUsage = threadMXBean.getThreadAllocatedBytes(threadId);
-        //System.out.println("Thread ID: " + threadId + ", Memory Usage: " + memoryUsage);
+
         return memoryUsage;
     }
 }

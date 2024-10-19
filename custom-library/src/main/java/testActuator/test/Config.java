@@ -15,6 +15,7 @@ public class Config implements WebMvcConfigurer {
         this.meterRegistry = meterRegistry;
     }
 
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // 인터셉터 등록 및 특정 경로에만 적용
