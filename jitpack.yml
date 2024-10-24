@@ -1,5 +1,3 @@
 jdk: openjdk17
-before_install:
-  commands:
-    - cd custom-library
+before_install: cd custom-library
 install: ./gradlew build publishToMavenLocal
