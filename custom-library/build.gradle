@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'test-actuator'
-version = '0.0.10'
+version = '0.0.11'
 
 java {
 	toolchain {
@@ -38,10 +38,18 @@ publishing {
 		mavenJava(MavenPublication) {
 			groupId = 'test-actuator'
 			artifactId = 'VisualizeThreadPool'
-			version = '0.0.10'
+			version = '0.0.11'
 			from components.java
 		}
 	}
+}
+
+tasks.named("bootJar") {
+	archiveClassifier = 'boot'
+}
+
+tasks.named("jar") {
+	archiveClassifier = ''
 }
 
 tasks.named('test') {
