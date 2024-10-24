@@ -12,11 +12,5 @@ public class TestApplication {
 		SpringApplication.run(TestApplication.class, args);
 	}
 
-	@Bean
-	public InMemoryHttpExchangeRepository httpExchangeRepository() {
-		return new InMemoryHttpExchangeRepository();
-	}
-
-
 }
 
