@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'test-actuator'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.4'
 
 java {
 	toolchain {
@@ -37,6 +37,18 @@ publishing {
 	publications {
 		mavenJava(MavenPublication) {
 			from components.java
+			groupId = 'test-actuator'
+			artifactId = 'custom-library'
+			version = '0.0.4'
+			pom.withXml {
+				def dependenciesNode = asNode().appendNode('dependencies')
+				configurations.compile.allDependencies.each { dep ->
+					def dependencyNode = dependenciesNode.appendNode('dependency')
+					dependencyNode.appendNode('groupId', 'test-actuator')
+					dependencyNode.appendNode('artifactId', 'custom-library')
+					dependencyNode.appendNode('version', '0.0.4')
+				}
+			}
 		}
 	}
 }
