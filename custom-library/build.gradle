@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'test-actuator'
-version = '0.0.7'
+version = '0.0.8'
 
 java {
 	toolchain {
@@ -38,7 +38,7 @@ publishing {
 		mavenJava(MavenPublication) {
 			groupId = 'test-actuator'
 			artifactId = 'custom-library'
-			version = '0.0.7'
+			version = '0.0.8'
 			from components.java
 		}
 	}
