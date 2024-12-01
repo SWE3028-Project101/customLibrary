@@ -1,7 +1,7 @@
 # CustomLibrary to get information about each thread
 The primary goal of this project is to monitor the each of specific request being handled in thread pool of Spring project based on Tomcat Server.
 This library helps you to know each thread's memory usage, uri, executionTime, error, request time for Spring project.
-To ensure if it is working properly, check your uri : <'{projects's host}:{project's port}/actuator/metrics/custom.memory.usage'>
+To ensure if it is working properly, check your uri : <span style ="color:#808080"> '{projects's host}:{project's port}/actuator/metrics/custom.memory.usage'</span>
 
 
 # Getting Started
