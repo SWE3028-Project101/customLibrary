@@ -15,9 +15,22 @@ To ensure if it is working properly, check your uri : <p>
 ### Build.gradle Configuration
 you need Spring Actuator as dependency
 
+#### Step 1. Add the JitPack repository to your build file
+
+```
+dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+		repositories {
+			mavenCentral()
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+#### Step 2. Add the dependency
 ```
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator:{version}'
+	implementation 'com.github.SWE3028-Project101:VisualizeThreadPool:Tag'
 }
 ```
 ### Here is a quick teaser of an application using customLibrary in Java:
