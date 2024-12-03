@@ -30,7 +30,7 @@ dependencyResolutionManagement {
 ```
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator:{version}'
-	implementation 'com.github.SWE3028-Project101:VisualizeThreadPool:Tag'
+	implementation 'com.github.SWE3028-Project101:customLibrary:Tag'
 }
 ```
 ### Here is a quick teaser of an application using customLibrary in Java:
