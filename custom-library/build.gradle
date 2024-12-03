@@ -38,7 +38,7 @@ publishing {
 		mavenJava(MavenPublication) {
 			groupId = 'test-actuator'
 			artifactId = 'VisualizeThreadPool'
-			version = '1.0.1'
+			version = '1.0.2'
 			from components.java
 		}
 	}
