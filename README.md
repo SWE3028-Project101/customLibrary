@@ -15,7 +15,7 @@ To ensure if it is working properly, check your uri : <p>
 ### Build.gradle Configuration
 you need Spring Actuator as dependency
 
-#### Step 1. Add the JitPack repository to your build file
+#### Step 1. Add the JitPack repository to your build file (settings.gradle)
 
 ```
 dependencyResolutionManagement {
