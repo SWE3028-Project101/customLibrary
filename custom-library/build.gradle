@@ -46,6 +46,7 @@ publishing {
 
 tasks.named("bootJar") {
 	archiveClassifier = 'boot'
+	mainClass = 'testActuator.test.CustomHandlerInterceptor'
 }
 
 tasks.named("jar") {
