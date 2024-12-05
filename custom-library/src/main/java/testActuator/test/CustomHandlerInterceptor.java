@@ -31,13 +31,6 @@ public class CustomHandlerInterceptor implements HandlerInterceptor {
             request.setAttribute("error in HandlerInterceptor", false);
             // 특정 URL로의 요청을 처리
             long startTime = System.currentTimeMillis();
-            //request.getreqestURI가 null인지 체크
-        /*
-        if(request.getRequestURI() == null) {
-            request.setAttribute("error in HandlerInterceptor",true);
-        }
-
-         */
             requestURI = request.getRequestURI();
             //요청 객체에 새로운 속성 부여
             request.setAttribute("startTime", startTime);
@@ -55,14 +48,14 @@ public class CustomHandlerInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-       try {
-           System.out.println("async thread called postHandler");
-           //에러 발생 안했으면 true로 부여
-           request.setAttribute("no error", true);
-       } catch (Exception e){
-           request.setAttribute("error in HandlerInterceptor", true);
-           e.printStackTrace();
-       }
+        try {
+            System.out.println("async thread called postHandler");
+            //에러 발생 안했으면 true로 부여
+            request.setAttribute("no error", true);
+        } catch (Exception e){
+            request.setAttribute("error in HandlerInterceptor", true);
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -70,9 +63,7 @@ public class CustomHandlerInterceptor implements HandlerInterceptor {
         try {
             System.out.println("async thread called afterCompletion");
             Long startTime = (Long) request.getAttribute("startTime");
-            if (startTime == null) {
 
-            }
             Long endTime = System.currentTimeMillis();
             Long executeTime = endTime - startTime;
             String isError = "";
